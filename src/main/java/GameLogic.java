@@ -33,21 +33,21 @@ public class GameLogic {
                 continue;
             }
             else if(gameFields.isFirstPlayer()){
-                gameFields.getFields()[(choice - 1) / 3][(choice - 1) % 3] = 'X';
+                gameFields.getFields()[(choice - 1) / 3][(choice - 1) % 3] = GameFields.X;
                 gameFields.getPayedFields()[(choice - 1) / 3][(choice - 1) % 3] = true;
                 gameFields.setFirstPlayer(false);
 
-                if(checkPlayerXWon(gameFields)){
+                if(checkPlayerWon(gameFields, GameFields.X)){
                     System.out.println("Player X Won");
                     gameDisplay.display(gameFields);
                     break;
                 }
             }
             else {
-                gameFields.getFields()[(choice - 1) / 3][(choice - 1) % 3] = 'O';
+                gameFields.getFields()[(choice - 1) / 3][(choice - 1) % 3] = GameFields.O;
                 gameFields.getPayedFields()[(choice - 1) / 3][(choice - 1) % 3] = true;
                 gameFields.setFirstPlayer(true);
-                if(checkPlayerOWon(gameFields)){
+                if(checkPlayerWon(gameFields, GameFields.O)){
                     System.out.println("Player O Won");
                     gameDisplay.display(gameFields);
                     break;
@@ -63,54 +63,29 @@ public class GameLogic {
     }
 
 
-    private boolean checkPlayerXWon(GameFields gameFields){
-        if(gameFields.getFields()[0][0] == 'X' && gameFields.getFields()[0][1] == 'X' && gameFields.getFields()[0][2] == 'X'){
+    private boolean checkPlayerWon(GameFields gameFields, char player){
+        if(gameFields.getFields()[0][0] == player && gameFields.getFields()[0][1] == player && gameFields.getFields()[0][2] == player){
             return true;
         }
-        else if(gameFields.getFields()[1][0] == 'X' && gameFields.getFields()[1][1] == 'X' && gameFields.getFields()[1][2] == 'X'){
+        else if(gameFields.getFields()[1][0] == player && gameFields.getFields()[1][1] == player && gameFields.getFields()[1][2] == player){
             return true;
         }
-        else if(gameFields.getFields()[2][0] == 'X' && gameFields.getFields()[2][1] == 'X' && gameFields.getFields()[2][2] == 'X'){
+        else if(gameFields.getFields()[2][0] == player && gameFields.getFields()[2][1] == player && gameFields.getFields()[2][2] == player){
             return true;
         }
-        else if (gameFields.getFields()[0][0] == 'X' && gameFields.getFields()[1][0] == 'X' && gameFields.getFields()[2][0] == 'X'){
+        else if (gameFields.getFields()[0][0] == player && gameFields.getFields()[1][0] == player && gameFields.getFields()[2][0] == player){
             return true;
         }
-        else if(gameFields.getFields()[0][2] == 'X' && gameFields.getFields()[1][2] == 'X' && gameFields.getFields()[2][2] == 'X'){
+        else if(gameFields.getFields()[0][2] == player && gameFields.getFields()[1][2] == player && gameFields.getFields()[2][2] == player){
             return true;
         }
-        else if(gameFields.getFields()[0][1] == 'X' && gameFields.getFields()[1][1] == 'X' && gameFields.getFields()[2][1] == 'X'){
+        else if(gameFields.getFields()[0][1] == player && gameFields.getFields()[1][1] == player && gameFields.getFields()[2][1] == player){
             return true;
         }
-        else if(gameFields.getFields()[0][0] == 'X' && gameFields.getFields()[1][1] == 'X' && gameFields.getFields()[2][2] == 'X'){
+        else if(gameFields.getFields()[0][0] == player && gameFields.getFields()[1][1] == player && gameFields.getFields()[2][2] == player){
             return true;
         }
-        else return gameFields.getFields()[0][2] == 'X' && gameFields.getFields()[1][1] == 'X' && gameFields.getFields()[2][0] == 'X';
-    }
-
-    private boolean checkPlayerOWon(GameFields gameFields){
-        if(gameFields.getFields()[0][0] == 'O' && gameFields.getFields()[0][1] == 'O' && gameFields.getFields()[0][2] == 'O'){
-            return true;
-        }
-        else if(gameFields.getFields()[1][0] == 'O' && gameFields.getFields()[1][1] == 'O' && gameFields.getFields()[1][2] == 'O'){
-            return true;
-        }
-        else if(gameFields.getFields()[2][0] == 'O' && gameFields.getFields()[2][1] == 'O' && gameFields.getFields()[2][2] == 'O'){
-            return true;
-        }
-        else if (gameFields.getFields()[0][0] == 'O' && gameFields.getFields()[1][0] == 'O' && gameFields.getFields()[2][0] == 'O'){
-            return true;
-        }
-        else if(gameFields.getFields()[0][2] == 'O' && gameFields.getFields()[1][2] == 'O' && gameFields.getFields()[2][2] == 'O'){
-            return true;
-        }
-        else if(gameFields.getFields()[0][1] == 'O' && gameFields.getFields()[1][1] == 'O' && gameFields.getFields()[2][1] == 'O'){
-            return true;
-        }
-        else if(gameFields.getFields()[0][0] == 'O' && gameFields.getFields()[1][1] == 'O' && gameFields.getFields()[2][2] == 'O'){
-            return true;
-        }
-        else return gameFields.getFields()[0][2] == 'O' && gameFields.getFields()[1][1] == 'O' && gameFields.getFields()[2][0] == 'O';
+        else return gameFields.getFields()[0][2] == player && gameFields.getFields()[1][1] == player && gameFields.getFields()[2][0] == player;
     }
 
 }

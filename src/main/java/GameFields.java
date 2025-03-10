@@ -3,6 +3,8 @@ public class GameFields {
 
     private boolean isFirstPlayer = true;
     private int moveCounter = 0;
+    public static char X = 'X';
+    public static char O = 'O';
 
     private final char[][] fields = new char[][]{
                                                     {'1', '2', '3'},
